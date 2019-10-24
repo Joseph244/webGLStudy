@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>WebGL从零开始0</title>
+    <style>
+       
+    </style>
+</head>
+
+<body>
+    <canvas id="gl0" height="600" width="600"></canvas>
+    <script>
+        const canvas = document.getElementById("gl0");
+        const gl = canvas.getContext("webgl");
+        gl.clearColor(0.0,1.0,1.0,1.0);
+        gl.clear(gl.COLOR_BUFFER_BIT);
+    </script>
+</body>
+</html>
