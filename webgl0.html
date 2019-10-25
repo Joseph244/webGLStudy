@@ -12,10 +12,10 @@
 <body>
     <canvas id="gl0" height="600" width="600"></canvas>
     <script>
-        const canvas = document.getElementById("gl0");
-        const gl = canvas.getContext("webgl");
-        gl.clearColor(0.0,1.0,1.0,1.0);
-        gl.clear(gl.COLOR_BUFFER_BIT);
+        const canvas = document.getElementById("gl0");  // 获取canvas元素
+        const gl = canvas.getContext("webgl");          // 获取webgl上下文
+        gl.clearColor(0.0,1.0,1.0,1.0);                 // 设置背景色(使用设置的背景色清除canvas)
+        gl.clear(gl.COLOR_BUFFER_BIT);                  // 清除canvas   
     </script>
 </body>
 </html>

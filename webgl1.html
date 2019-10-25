@@ -14,33 +14,38 @@
     <script>
         const canvas = document.getElementById("gl0");
         const gl = canvas.getContext("webgl");
+        // 初始化着色器：其实下面的函数在定义的时候就加载好了，我们只是在使用的时候调用而已；gl_xxx 都是内置变量
+        // 顶点着色器，下面的main函数框架是固定写法（gl_PointSize表示weggl像素点的大小）
         const VERTEX_SHADER=""+
             "void main(){" +
             "gl_Position=vec4(0.0,0.0,1.0,1.0);" +
             "gl_PointSize=10.0;" +
             "}";
+        // 片元着色器：vec4是一个矢量函数
         const FRAG_SHADER="" +
             "void main(){" +
             "gl_FragColor=vec4(1.0,0.0,0.0,1.0);" +
             "}";
+        // 创建顶点着色器
         const vertex=gl.createShader(gl.VERTEX_SHADER)
-        const frag=gl.createShader(gl.FRAGMENT_SHADER)
-        gl.shaderSource(vertex, VERTEX_SHADER);
+        const frag=gl.createShader(gl.FRAGMENT_SHADER)    // 创建片元着色器
+        gl.shaderSource(vertex, VERTEX_SHADER);   // 将着色器添加到当前gl对象中
         gl.shaderSource(frag,FRAG_SHADER);
-
+        // 编译着色器
         gl.compileShader(vertex);
         gl.compileShader(frag);
-
+        // 创建对象，并分配着色器对象
         const program = gl.createProgram();
         gl.attachShader(program, vertex);
         gl.attachShader(program, frag);
-
+        // gl连接该对象
         gl.linkProgram(program);
-        gl.useProgram(program);
+        gl.useProgram(program);  // 使用该对象
 
+        // 设置背景色
         gl.clearColor(0.0,0.0,0.0,1.0);
         gl.clear(gl.COLOR_BUFFER_BIT);
-
+        // 绘制点（gl.POINTS），gl还有很多其他的方法可以绘制不用的形状
         gl.drawArrays(gl.POINTS,0,1);
     </script>
 </body>
